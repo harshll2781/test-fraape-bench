@@ -144,3 +144,4 @@ archived/sites
 
 logs
 config/pids
+.bench.cmd
