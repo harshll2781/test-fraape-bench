@@ -5,7 +5,7 @@
  "frappe_user": "harshal",
  "gunicorn_workers": 17,
  "live_reload": true,
- "maintenance_mode": 1,
+ "maintenance_mode": 0,
  "pause_scheduler": 1,
  "rebase_on_pull": false,
  "redis_cache": "redis://localhost:13000",

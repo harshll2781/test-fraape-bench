@@ -141,3 +141,6 @@ packer_cache/
 *.box
 
 archived/sites
+
+logs
+config/pids

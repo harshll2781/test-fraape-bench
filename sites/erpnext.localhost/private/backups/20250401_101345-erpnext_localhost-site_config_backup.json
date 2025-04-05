@@ -2,6 +2,5 @@
  "db_name": "_b5c8af1722866af7",
  "db_password": "iSeYAKKjZUANtIbu",
  "db_type": "postgres",
- "db_user": "_b5c8af1722866af7",
- "maintenance_mode": 0
+ "db_user": "_b5c8af1722866af7"
 }

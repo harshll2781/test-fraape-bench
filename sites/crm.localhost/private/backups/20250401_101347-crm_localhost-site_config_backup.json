@@ -2,6 +2,5 @@
  "db_name": "frappe_crm",
  "db_password": "ECGOK1e2Oul4QjFC",
  "db_type": "postgres",
- "db_user": "frappe_crm",
- "maintenance_mode": 0
+ "db_user": "frappe_crm"
 }

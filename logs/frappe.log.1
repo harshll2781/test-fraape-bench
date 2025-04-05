@@ -1,4 +1,674 @@
-2025-03-22 09:56:58,443 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+2025-03-26 11:47:34,262 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
+    return insert_doc(doc).as_dict()
+           ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
+    return frappe.get_doc(doc).insert()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
+    self.run_before_save_methods()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1276, in run_before_save_methods
+    self.run_method("before_validate")
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1130, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1518, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1496, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1127, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
+    self.set_sla()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
+    sla = get_sla(self)
+          ^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
+    sla_list = q.run(as_dict=True)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:48:32,648 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
+    return insert_doc(doc).as_dict()
+           ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
+    return frappe.get_doc(doc).insert()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
+    self.run_before_save_methods()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1277, in run_before_save_methods
+    self.run_method("before_validate")
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1131, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1519, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1497, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1128, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
+    self.set_sla()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
+    sla = get_sla(self)
+          ^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
+    sla_list = q.run(as_dict=True)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:59:33,213 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doctype': 'Contact', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
+    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
+    .run(as_dict=True)
+     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...tabDocField" WHERE "parent"='Contact' AND "hidden"=false AND...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:59:36,368 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doctype': 'CRM Deal', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
+    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
+    .run(as_dict=True)
+     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...abDocField" WHERE "parent"='CRM Deal' AND "hidden"=false AND...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:59:37,201 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doctype': 'CRM Organization', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
+    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
+    .run(as_dict=True)
+     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...ld" WHERE "parent"='CRM Organization' AND "hidden"=false AND...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:59:37,854 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doctype': 'Contact', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
+    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
+    .run(as_dict=True)
+     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...tabDocField" WHERE "parent"='Contact' AND "hidden"=false AND...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 11:59:39,840 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+
+Site: crm.localhost
+Form Dict: {'doctype': 'CRM Call Log', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
+    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
+    .run(as_dict=True)
+     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
+LINE 1: ...cField" WHERE "parent"='CRM Call Log' AND "hidden"=false AND...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
+    return func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
+    return get_doc_from_dict(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
+    controller = get_controller(data["doctype"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
+    site_controllers[doctype] = import_controller(doctype)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
+    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
+    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
+    self._cursor.execute(query, values)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+2025-03-26 12:26:46,661 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
 
 Site: crm.localhost
 Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
@@ -86,10 +756,16 @@ Traceback (most recent call last):
     self._cursor.execute(query, values)
 psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
 
-2025-03-22 09:57:33,881 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
+2025-03-26 12:37:16,992 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {'cmd': 'frappe.www.login.send_login_link', 'email': 'harshalpatel12.py@gmail.com'}
+2025-03-26 12:37:42,892 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {'user': 'harshalpatel12.py@gmail.com', 'cmd': 'frappe.core.doctype.user.user.reset_password'}
+2025-03-26 14:18:16,918 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
 
 Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
 Traceback (most recent call last):
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
     response = frappe.api.handle(request)
@@ -112,12 +788,39 @@ Traceback (most recent call last):
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
+    return insert_doc(doc).as_dict()
+           ^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
+    return frappe.get_doc(doc).insert()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
+    self.run_before_save_methods()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1275, in run_before_save_methods
+    self.run_method("before_validate")
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1129, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1517, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1495, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1126, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
+    self.set_sla()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
+    sla = get_sla(self)
+          ^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
+    sla_list = q.run(as_dict=True)
+               ^^^^^^^^^^^^^^^^^^^
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
     result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,7 +830,7 @@ Traceback (most recent call last):
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
     self._cursor.execute(query, values)
 psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
+LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
                                                              ^
 HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
 
@@ -174,51 +877,36 @@ Traceback (most recent call last):
     self._cursor.execute(query, values)
 psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
 
-2025-03-24 10:02:41,461 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+2025-03-26 16:26:10,345 ERROR frappe Could not take error snapshot: Module Core not found
 Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Form Dict: {}
 Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 132, in __init__
+    self.get_user_info()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 176, in get_user_info
+    self.user_type = self.info.user_type
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'user_type'
 
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 97, in application
+    init_request(request)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 197, in init_request
+    frappe.local.http_request = HTTPRequest()
+                                ^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 42, in __init__
+    self.set_session()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 76, in set_session
+    frappe.local.login_manager = LoginManager()
+                                 ^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 136, in __init__
+    self.get_user_info()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/auth.py", line 176, in get_user_info
+    self.user_type = self.info.user_type
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'user_type'
 
 During handling of the above exception, another exception occurred:
 
@@ -243,202 +931,42 @@ Traceback (most recent call last):
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
     site_controllers[doctype] = import_controller(doctype)
                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-24 14:56:13,273 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 103, in import_controller
+    module = load_doctype_module(doctype, module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/modules/utils.py", line 248, in load_doctype_module
+    app = get_module_app(module)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/modules/utils.py", line 273, in get_module_app
+    frappe.throw(_("Module {} not found").format(module), exc=frappe.DoesNotExistError)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 145, in throw
+    msgprint(
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 106, in msgprint
+    _raise_exception()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 57, in _raise_exception
+    raise exc
+frappe.exceptions.DoesNotExistError: Module Core not found
+2025-03-26 16:26:10,384 ERROR frappe Failed to run after request hook
 Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
+Form Dict: {}
 Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-24 19:56:01,976 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
-Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-24 20:26:56,136 ERROR frappe Failed to capture exception
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 148, in application
+    run_after_request_hooks(request, response)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 164, in run_after_request_hooks
+    frappe.call(after_request_task, response=response, request=request)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1516, in call
+    fn = get_attr(fn)
+         ^^^^^^^^^^^^
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1506, in get_attr
+    throw(_("App {0} is not installed").format(app_name), AppNotInstalledError)
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 145, in throw
+    msgprint(
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 106, in msgprint
+    _raise_exception()
+  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/messages.py", line 57, in _raise_exception
+    raise exc
+frappe.exceptions.AppNotInstalledError: App frappe is not installed
+2025-03-26 20:16:30,344 ERROR frappe Failed to capture exception
 Site: crm.localhost
 Form Dict: {'cmd': 'crm.api.get_posthog_settings'}
 Traceback (most recent call last):
@@ -473,780 +1001,321 @@ Traceback (most recent call last):
   File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/env/lib/python3.11/site-packages/werkzeug/wrappers/request.py", line 642, in on_json_loading_failed
     raise BadRequest(f"Failed to decode JSON object: {e}")
 werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
-2025-03-24 20:26:56,147 ERROR frappe New Exception collected in error log
+2025-03-26 20:16:30,347 ERROR frappe New Exception collected in error log
 Site: crm.localhost
 Form Dict: {'cmd': 'crm.api.get_posthog_settings'}
-2025-03-24 20:27:00,823 ERROR frappe New Exception collected in error log
+2025-03-26 20:17:05,058 ERROR frappe New Exception collected in error log
 Site: crm.localhost
 Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-2025-03-24 20:28:49,372 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+2025-03-26 20:18:47,346 ERROR frappe New Exception collected in error log
 Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 106, in get_doc_from_dict
-    return controller(**data)
-           ^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 176, in __init__
-    self._init_from_kwargs(kwargs)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 181, in _init_from_kwargs
-    super().__init__(kwargs)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 154, in __init__
-    self.update(d)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 208, in update
-    if not self._table_fieldnames or self.flags.get("ignore_children", False):
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/functools.py", line 1001, in __get__
-    val = self.func(instance)
-          ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 391, in _table_fieldnames
-    return self.meta._table_doctypes
-           ^^^^^^^^^
-  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/functools.py", line 1001, in __get__
-    val = self.func(instance)
-          ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 165, in meta
-    return frappe.get_meta(self.doctype)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1094, in get_meta
-    return frappe.model.meta.get_meta(doctype, cached=cached)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/meta.py", line 89, in get_meta
-    meta = Meta(doctype)
-           ^^^^^^^^^^^^^
-  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/functools.py", line 946, in _method
-    return method.__get__(obj, cls)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/meta.py", line 154, in _
-    super().__init__("DocType", doctype)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 174, in __init__
-    self._init_dispatch(args[0], *args[1:], **kwargs)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 198, in _init_dispatch
-    return self._init_known_doc(arg, name, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 191, in _init_known_doc
-    self.load_from_db()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/meta.py", line 174, in load_from_db
-    super().load_from_db()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 250, in load_from_db
-    d = frappe.db.get_value(
-        ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-25 09:18:08,182 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
-Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-25 09:19:02,445 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
-Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 74, in get_filterable_fields
-    doc_fields = get_doctype_fields_meta(DocField, doctype, allowed_fieldtypes, restricted_fields)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/api/doc.py", line 177, in get_doctype_fields_meta
-    .run(as_dict=True)
-     ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...abDocField" WHERE "parent"='CRM Lead' AND "hidden"=false AND...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-26 10:18:42,780 ERROR frappe New Exception collected in error log
-Site: crm.localhost
-Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Darshil', 'last_name': 'Bavishi', 'email': 'darshil.bavishi@softedge.in', 'mobile_no': '7046252356', 'gender': 'Male', 'organization': 'Darshil', 'website': 'https://darshil.com', 'no_of_employees': '1-10', 'territory': '', 'annual_revenue': 50, 'industry': 'Software', 'status': 'Qualified', 'lead_owner': 'harshalpatel12.py@gmail.com'}, 'cmd': 'frappe.client.insert'}
-2025-03-26 10:19:07,824 ERROR frappe New Exception collected in error log
-Site: crm.localhost
-Form Dict: {'doctype': 'CRM Lead', 'cmd': 'crm.api.doc.get_filterable_fields'}
-2025-03-26 10:20:12,354 ERROR frappe New Exception collected in error log
+Form Dict: {'doctype': 'CRM Call Log', 'cmd': 'crm.api.doc.get_filterable_fields'}
+2025-03-27 11:23:07,899 ERROR frappe New Exception collected in error log
 Site: crm.localhost
 Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
-2025-03-26 10:56:30,781 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+2025-03-27 20:44:01,979 ERROR frappe New Exception collected in error log
 Site: crm.localhost
-Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator', 'enabled': 1}, 'cmd': 'frappe.client.insert'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
-    return insert_doc(doc).as_dict()
-           ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
-    return frappe.get_doc(doc).insert()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
-    self.run_before_save_methods()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1274, in run_before_save_methods
-    self.run_method("before_validate")
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1128, in run_method
-    out = Document.hook(fn)(self, *args, **kwargs)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1516, in composer
-    return composed(self, method, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1494, in runner
-    add_to_return_value(self, fn(self, *args, **kwargs))
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1125, in fn
-    return method_object(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
-    self.set_sla()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
-    sla = get_sla(self)
-          ^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
-    sla_list = q.run(as_dict=True)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-26 10:56:43,370 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:45:30,844 ERROR frappe New Exception collected in error log
 Site: crm.localhost
-Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator', 'enabled': '1'}, 'cmd': 'frappe.client.insert'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
-    return insert_doc(doc).as_dict()
-           ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
-    return frappe.get_doc(doc).insert()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
-    self.run_before_save_methods()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1274, in run_before_save_methods
-    self.run_method("before_validate")
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1128, in run_method
-    out = Document.hook(fn)(self, *args, **kwargs)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1516, in composer
-    return composed(self, method, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1494, in runner
-    add_to_return_value(self, fn(self, *args, **kwargs))
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1125, in fn
-    return method_object(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
-    self.set_sla()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
-    sla = get_sla(self)
-          ^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
-    sla_list = q.run(as_dict=True)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-26 10:57:06,135 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:45:54,641 ERROR frappe New Exception collected in error log
 Site: crm.localhost
-Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator', 'enabled': '1'}, 'cmd': 'frappe.client.insert'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
-    return insert_doc(doc).as_dict()
-           ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
-    return frappe.get_doc(doc).insert()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
-    self.run_before_save_methods()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1274, in run_before_save_methods
-    self.run_method("before_validate")
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1128, in run_method
-    out = Document.hook(fn)(self, *args, **kwargs)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1516, in composer
-    return composed(self, method, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1494, in runner
-    add_to_return_value(self, fn(self, *args, **kwargs))
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1125, in fn
-    return method_object(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
-    self.set_sla()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
-    sla = get_sla(self)
-          ^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
-    sla_list = q.run(as_dict=True)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
-2025-03-26 11:34:21,696 ERROR frappe Could not take error snapshot: current transaction is aborted, commands ignored until end of transaction block
-
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:46:02,559 ERROR frappe New Exception collected in error log
 Site: crm.localhost
-Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Guest'}, 'cmd': 'frappe.client.insert'}
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/app.py", line 116, in application
-    response = frappe.api.handle(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/__init__.py", line 49, in handle
-    data = endpoint(**arguments)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/api/v1.py", line 36, in handle_rpc_call
-    return frappe.handler.handle()
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 51, in handle
-    data = execute_cmd(cmd)
-           ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/handler.py", line 84, in execute_cmd
-    return frappe.call(method, **frappe.form_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1520, in call
-    return fn(*args, **newargs)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 201, in insert
-    return insert_doc(doc).as_dict()
-           ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/client.py", line 475, in insert_doc
-    return frappe.get_doc(doc).insert()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 123, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 412, in insert
-    self.run_before_save_methods()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1274, in run_before_save_methods
-    self.run_method("before_validate")
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1128, in run_method
-    out = Document.hook(fn)(self, *args, **kwargs)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1516, in composer
-    return composed(self, method, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1494, in runner
-    add_to_return_value(self, fn(self, *args, **kwargs))
-                              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 1125, in fn
-    return method_object(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 18, in before_validate
-    self.set_sla()
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_lead/crm_lead.py", line 304, in set_sla
-    sla = get_sla(self)
-          ^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/crm/crm/fcrm/doctype/crm_service_level_agreement/utils.py", line 33, in get_sla
-    sla_list = q.run(as_dict=True)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.UndefinedFunction: operator does not exist: smallint = boolean
-LINE 1: ...ad' AND "tabCRM Service Level Agreement"."enabled"=true AND ...
-                                                             ^
-HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 87, in log_error_snapshot
-    log_error(title=str(exception), defer_insert=True)
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/utils/error.py", line 62, in log_error
-    error_log = frappe.get_doc(
-                ^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/__init__.py", line 1067, in get_doc
-    return frappe.model.document.get_doc(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/utils/__init__.py", line 217, in wrapper
-    return func(*args, **kw)
-           ^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 70, in get_doc
-    return get_doc_from_dict(kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/document.py", line 104, in get_doc_from_dict
-    controller = get_controller(data["doctype"])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 83, in get_controller
-    site_controllers[doctype] = import_controller(doctype)
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/model/base_document.py", line 94, in import_controller
-    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 537, in get_value
-    result = self.get_values(
-             ^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 653, in get_values
-    out = query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/query_builder/utils.py", line 79, in execute_query
-    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/postgres/database.py", line 233, in sql
-    return super().sql(modify_query(query), modify_values(values), *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/harshal/Desktop/softedge/yourcare/frappe-bench/apps/frappe/frappe/database/database.py", line 255, in sql
-    self._cursor.execute(query, values)
-psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
-
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:50:37,665 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:51:19,595 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 20:51:44,314 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:07:53,802 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:08:23,707 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:09:21,590 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:11:48,614 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:12:18,275 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-27 21:12:48,313 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:08:11,826 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:08:27,459 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:10:52,894 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:13:02,589 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:13:29,694 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:21:07,077 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:23:30,398 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:35:46,028 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:39:49,210 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:40:01,655 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:43:25,340 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:47:22,429 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-28 08:53:28,189 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-31 09:08:24,486 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-31 09:10:01,583 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-03-31 09:14:07,067 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': 'Dr', 'first_name': 'Harshal', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Nurture', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-01 10:04:50,525 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:15,377 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:15,479 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:22,757 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:22,811 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:29,065 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:05:29,157 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:05:37,604 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:37,654 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:05:39,733 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:05:39,794 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:10:04,872 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:10:04,989 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:10:18,061 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:10:18,138 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:11:41,224 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:11:41,309 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:12:07,941 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:12:08,017 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:12:11,236 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:12:11,297 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {}
+2025-04-01 10:17:08,724 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:17:08,830 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:12,820 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:12,885 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:14,214 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:14,266 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:14,791 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:14,840 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,069 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,122 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,264 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,316 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,473 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,522 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,669 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,713 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,855 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:15,898 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:41,448 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:41,524 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,002 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,047 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,764 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,816 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,912 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:43,955 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,084 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,127 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,228 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,271 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,381 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:24:44,422 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:25:11,776 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:25:11,834 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:27:57,903 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:27:57,957 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {}
+2025-04-01 10:33:55,136 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {'date': '2025-04-01', 'raise_on_missing': 'true', 'cmd': 'erpnext.accounts.utils.get_fiscal_year'}
+2025-04-01 10:33:55,153 ERROR frappe New Exception collected in error log
+Site: erpnext.localhost
+Form Dict: {'date': '2025-04-01', 'raise_on_missing': 'true', 'cmd': 'erpnext.accounts.utils.get_fiscal_year'}
+2025-04-04 12:37:46,801 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,802 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,803 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,803 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,803 ERROR frappe Error while inserting deferred Error Log record: 'str' object has no attribute 'update'
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
+2025-04-04 12:37:46,803 ERROR frappe New Exception collected in error log
+Site: crm.localhost
+Form Dict: {'doc': {'doctype': 'CRM Lead', 'salutation': '', 'first_name': '', 'last_name': '', 'email': '', 'mobile_no': '', 'gender': '', 'organization': '', 'website': '', 'no_of_employees': '', 'territory': '', 'annual_revenue': '', 'industry': '', 'status': 'Contacted', 'lead_owner': 'Administrator'}, 'cmd': 'frappe.client.insert'}
